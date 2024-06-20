@@ -41,3 +41,28 @@ function getHumanChoice(){
     console.log("Player chooses:"+userInput);
     return userInput;
 }
+
+function playRound(humanChoice, computerChoice){
+    let roundResult="";
+    humanChoice=humanChoice.toUpperCase();
+    if("PAPER"===humanChoice&&computerChoice==="Paper"
+        ||"ROCK"===humanChoice&&computerChoice==="Rock"
+        ||"SCISSOR"===humanChoice&&computerChoice==="Scissor"){
+            console.log("It's a draw");
+            roundResult="It's a draw";
+    }
+    else if("PAPER"===humanChoice&&computerChoice==="Rock"
+        ||"ROCK"===humanChoice&&computerChoice==="Scissor"
+        ||"SCISSOR"===humanChoice&&computerChoice==="Paper"){
+            console.log("Player wins!");
+            roundResult="Player wins!";
+            humanScore++;
+            
+    }
+    else{
+        console.log("Computer wins!");
+        computerScore++;
+        roundResult="Computer wins!";
+    }
+    return roundResult;
+}
