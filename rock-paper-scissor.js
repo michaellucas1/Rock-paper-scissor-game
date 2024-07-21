@@ -67,11 +67,8 @@ function playRound(humanChoice, computerChoice){
     return roundResult;
 }
 function gameStart(){
-    while(gameCount < 5){
-        console.log(`Round ${gameCount+1}`)
-        let result=playRound(getHumanChoice(),getComputerChoice());
-        alert(`Round ${gameCount+1} result : ${result} \nPlayer score : ${humanScore} \nComputer score : ${computerScore}`)
-        gameCount++;
-    }
+    console.log(`Round ${gameCount+1}`)
+    let result=playRound(getHumanChoice(),getComputerChoice());
+    alert(`Round ${gameCount+1} result : ${result} \nPlayer score : ${humanScore} \nComputer score : ${computerScore}`)
 }
 gameStart();
