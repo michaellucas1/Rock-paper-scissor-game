@@ -19,29 +19,39 @@ function getComputerChoice(){
 }
 
 function playRound(){
-    let roundResult="";
     let humanChoice= this.textContent;
     let computerChoice = getComputerChoice();
+    let currentResult;
+    let gameResult = document.querySelector(".game-result");
+    gameResult.textContent="";
+    
+    
+    let scoreContainer=document.createElement("div");
     humanChoice=humanChoice.toUpperCase();
     if("PAPER"===humanChoice&&computerChoice==="Paper"
         ||"ROCK"===humanChoice&&computerChoice==="Rock"
         ||"SCISSOR"===humanChoice&&computerChoice==="Scissor"){
-            console.log("It's a draw");
-            roundResult="It's a draw";
+            currentResult = document.createTextNode("It's a draw");
+            
     }
     else if("PAPER"===humanChoice&&computerChoice==="Rock"
         ||"ROCK"===humanChoice&&computerChoice==="Scissor"
         ||"SCISSOR"===humanChoice&&computerChoice==="Paper"){
-            console.log("Player wins!");
-            roundResult="Player wins!";
+            currentResult = document.createTextNode("Player wins!");
+
             humanScore++;
             
     }
     else{
+        currentResult = document.createTextNode("Computer wins!");
         console.log("Computer wins!");
         computerScore++;
-        roundResult="Computer wins!";
     }
+    let scoreDisplay=document.createTextNode(`Player Score: ${humanScore} Computer Score: ${computerScore}`);
+    scoreContainer.appendChild(scoreDisplay);
+    gameResult.appendChild(scoreContainer);
+    gameResult.appendChild(currentResult);
+    gameCount++;
 
 }
 
