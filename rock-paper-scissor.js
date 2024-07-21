@@ -17,14 +17,19 @@ function getComputerChoice(){
     console.log("Computer chooses:"+computerChoice);
     return computerChoice;
 }
-
+function displayPlayerChoice(humanChoice,computerChoice){
+    let playerChoice = document.createTextNode(`Player: ${humanChoice} vs Computer: ${computerChoice}`);
+    let displayContainer= document.createElement("div");
+    displayContainer.appendChild(playerChoice);
+    return displayContainer;
+}
 function playRound(){
     let humanChoice= this.textContent;
     let computerChoice = getComputerChoice();
+    
     let currentResult;
     let gameResult = document.querySelector(".game-result");
     gameResult.textContent="";
-    
     
     let scoreContainer=document.createElement("div");
     humanChoice=humanChoice.toUpperCase();
@@ -50,6 +55,7 @@ function playRound(){
     let scoreDisplay=document.createTextNode(`Player Score: ${humanScore} Computer Score: ${computerScore}`);
     scoreContainer.appendChild(scoreDisplay);
     gameResult.appendChild(scoreContainer);
+    gameResult.appendChild(displayPlayerChoice(this.textContent,computerChoice));
     gameResult.appendChild(currentResult);
     gameCount++;
 
