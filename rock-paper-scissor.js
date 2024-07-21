@@ -18,27 +18,7 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-function getHumanChoice(){
-    let userInput=prompt("Enter your choice (Rock, Paper, Scissor)");
-    let isValid=true;
-    let counter=0;
-    while(isValid){
-        if(!("ROCK"===userInput.toUpperCase()
-            ||"PAPER"===userInput.toUpperCase()
-            ||"SCISSOR"===userInput.toUpperCase())){
-                userInput=prompt("Invalid Choice. Please try again");
-                if(counter>10){
-                    alert("Player's choice will be randomized");
-                    userInput=getComputerChoice();
-                    isValid=false;
-                }
-            }
-        else{
-            isValid=false;
-        }
-        counter++;
-    }
-    console.log("Player chooses:"+userInput);
+function getPlayerSelection(userInput){
     return userInput;
 }
 
@@ -68,7 +48,7 @@ function playRound(humanChoice, computerChoice){
 }
 function gameStart(){
     console.log(`Round ${gameCount+1}`)
-    let result=playRound(getHumanChoice(),getComputerChoice());
+    let result=playRound(getPlayerSelection(),getComputerChoice());
     alert(`Round ${gameCount+1} result : ${result} \nPlayer score : ${humanScore} \nComputer score : ${computerScore}`)
 }
 gameStart();
