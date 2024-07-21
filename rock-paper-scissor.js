@@ -18,12 +18,10 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-function getPlayerSelection(userInput){
-    return userInput;
-}
-
-function playRound(humanChoice, computerChoice){
+function playRound(){
     let roundResult="";
+    let humanChoice= this.textContent;
+    let computerChoice = getComputerChoice();
     humanChoice=humanChoice.toUpperCase();
     if("PAPER"===humanChoice&&computerChoice==="Paper"
         ||"ROCK"===humanChoice&&computerChoice==="Rock"
@@ -44,11 +42,15 @@ function playRound(humanChoice, computerChoice){
         computerScore++;
         roundResult="Computer wins!";
     }
-    return roundResult;
+
 }
-function gameStart(){
-    console.log(`Round ${gameCount+1}`)
-    let result=playRound(getPlayerSelection(),getComputerChoice());
-    alert(`Round ${gameCount+1} result : ${result} \nPlayer score : ${humanScore} \nComputer score : ${computerScore}`)
-}
-gameStart();
+
+//alert(`Round ${gameCount+1} result : ${result} \nPlayer score : ${humanScore} \nComputer score : ${computerScore}`)
+
+const rock= document.querySelector('.rock');
+const paper= document.querySelector('.paper');
+const scissor= document.querySelector('.scissor');
+rock.addEventListener('click',playRound);
+paper.addEventListener('click',playRound);
+scissor.addEventListener('click',playRound);
+
